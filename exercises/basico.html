@@ -7,9 +7,32 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p>1: {{2 + 2}}</p>
+        <p>2: {{"test".toUpperCase()}}</p>
+        <p>3: Product: {{name}}, R$ {{price}}, {{discount * 100}}%</p> <!-- vue knows is from data.name -->
+        <p>4: Right Hour: {{rightHour()}}</p>
+        <p>5: Price With Discount R$ {{priceWithDiscount}}</p>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el:"#app", //element that the Vue controls
+            data:{
+                name: 'Pen',
+                price: 10.00,
+                discount: 0.15
+            },
+            methods:{
+                rightHour(){
+                    return new Date().toLocaleString()
+                }
+            },
+            computed:{
+                priceWithDiscount: function(){
+                    return this.price * (1 - this.discount);
+                }
+            }
+        })
     </script>
 </body>
 </html>
