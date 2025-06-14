@@ -6,15 +6,28 @@
     <link rel="stylesheet" href="/css/estilo.css">
     <script src="/js/vue.min.js"></script>
     <style>
-        .vermelho {
+        .redClass {
             background-color: red;
         }
     </style>
 </head>
 <body class="exercise">
-
+    <div id="app" @click="ChangeColor"
+        :class="{redClass: applyColor}">
+        Test
+    </div>
     <script>
-        // ...
+        new Vue({
+            el:"#app",
+            data:{
+                applyColor: false,
+            },
+            methods:{
+                ChangeColor(){
+                    this.applyColor = !this.applyColor;
+                }
+            },
+        })
     </script>
 </body>
 </html>
