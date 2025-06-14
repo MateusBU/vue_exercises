@@ -7,9 +7,39 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercise">
-
+    <div id="app">
+        <p>{{count}}</p>
+        <p>
+            <button v-on:click="add">+1</button>
+            <button @click="count -= 2">-2</button>
+        </p>
+        <p @mousemove="updatePosition">
+            Coordenates: {{x}} and {{y}}
+            <span @mousemove.stop> Not Here</span>
+        </p>
+        <input type="text" @keyup.enter="alertMsg">
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: "#app",
+            data:{
+                x: 0,
+                y: 0,
+                count: 0,
+            },
+            methods:{
+                add(){
+                    this.count++;
+                },
+                updatePosition(e){
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alertMsg(){
+                    alert('Enter');
+                }
+            }
+        })
     </script>
 </body>
 </html>
