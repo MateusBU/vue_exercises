@@ -25,7 +25,7 @@ body {
     min-height: 100%;
 }
 
-.exercicio {
+.exercise {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -6,10 +6,32 @@
     <link rel="stylesheet" href="/css/estilo.css">
     <script src="/js/vue.min.js"></script>
 </head>
-<body class="exercicio">
-
+<body class="exercise">
+    <div id="app">
+        <p>{{link}}</p>
+        <p><a href="{{link}}">Youtube?</a></p>
+        <p><a v-bind:href="link">Youtube</a></p>
+        <p><a :href="link">Youtube</a></p>
+        <p>
+            <!--When you type into the input, the value of name is automatically updated.-->
+            <input type="text" v-model="name"><br> 
+            <span>{{name}}</span>
+        </p>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: "#app",
+            data:{
+                name: "Maria",
+                link:"https://www.youtube.com/"
+            },
+            watch:{
+                //automatically receives the new value from data.name (this.name)
+                name(newValue){
+                    console.log(newValue.toUpperCase())
+                }
+            }
+        })
     </script>
 </body>
 </html>
