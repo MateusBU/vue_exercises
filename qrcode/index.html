@@ -10,9 +10,39 @@
 </head>
 
 <body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <div>
+            <input type="text" size="25"
+                placeholder="Type to generate..."
+                v-model="text">
+        </div>
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
 
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data:{
+                title: 'QRCode Generator',
+                text: 'https://www.youtube.com/',
+                qrcode: new QRious({size: 300}),
+            },
+            computed:{
+                newQRCode(){
+                    this.qrcode.value = this.text;
+                    return this.qrcode.toDataURL()
+                }
+            },
+        })
+    /*
+        - User types in the input.
+        - onData() updates text with the input's value.
+        - newQRCode recomputes because text changed.
+        - The QR code image updates automatically.
+    */
     </script>
 </body>
 

@@ -60,3 +60,6 @@ src/
 | `views/AboutView.vue` | `/about` |
 
 Routing is handled by Vue Router, linking URLs to components in `views/`.
+
+## Commands
+`npm run exercises/qrcode/sales`: starts project
